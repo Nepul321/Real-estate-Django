@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Real estate - Signup
+{% endblock title %}
+
+{% block custom_css %}
+<link rel="stylesheet" href="/static/css/auth_forms.css" />
+{% endblock custom_css %}
+
+{% block content %}
+<center>
+     <div class="container">
+          <div id="signup">
+               <h1>Signup</h1>
+               <form action="" method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button class="btn btn-primary">Sign up</button>
+               </form>
+               <p>Already have an account ? <a href="{% url 'login' %}">Login</a></p>
+          </div>
+     </div>
+</center>
+{% endblock content %}

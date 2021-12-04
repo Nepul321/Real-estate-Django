@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% block title %}
+Real estate - Home
+{% endblock title %}
+
+{% block custom_css %}
+<link rel="stylesheet" href="/static/css/home.css" />
+<link rel="stylesheet" href="/static/css/cards.css" />
+{% endblock custom_css %}
+
+{% block content %}
+<div class="container my-5">
+<h1>Real estate</h1>
+<center>
+  {% include 'components/search.html' %}
+</center>
+
+{% if results %}
+<section class="Resource-main my-5">
+  {% for result in results %}
+    <article class="Resource-tile">
+      <div class="Resource-tile-anchor">
+  
+        <div class="Resource-tile-media">
+          <img class="Resource-tile-img" src="{{ result.main_photo.url }}">
+          <span class="Resource-tile-price">${{ result.price | intcomma }}</span>
+        </div>
+  
+        <div class="Resource-tile-content">
+          <h2 class="Resource-tile-title">{{ result.title }}</h2>
+  
+          <div class="Resource-tile-intro">
+            <p>{{ result.description }}</p>
+            <p>In {{ result.city }}, {{ result.state }}, {{ result.zipcode }}</p>
+            <p>Garage : {{ result.garage }}</p>
+            <p>Sqft : {{ result.sqft }}</p>
+            <p>Bathrooms : {{ result.bathrooms }}</p>
+            <p>Bedrooms : {{ result.bedrooms }}</p>
+            <p>Realtor : {{ result.realtor.name }}</p>
+            <a href="{% url 'details' result.id %}" class="btn btn-outline-primary">More details</a>
+          </div>
+        </div>
+      </div>
+  
+    </article>
+    {% endfor %}
+  </section>
+{% else %}
+<h3>No properties found</h3>
+{% endif %}
+</div>
+{% endblock content %}
+
+{% block custom_js %}
+<script src="/static/js/home.js"></script>
+{% endblock custom_js %}

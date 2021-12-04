@@ -1,0 +1,9 @@
+Scripts/
+Lib/
+Include/
+virt/
+venv/
+pyvenv.cfg
+db.sqlite3
+src/.env
+media/

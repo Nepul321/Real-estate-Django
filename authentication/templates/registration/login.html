@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Real estate - Login
+{% endblock title %}
+
+{% block custom_css %}
+<link rel="stylesheet" href="/static/css/auth_forms.css" />
+{% endblock custom_css %}
+
+{% block content %}
+<center>
+<div class="container">
+{% if user.is_authenticated %}
+<h1>Hello {{ user.username }}</h1>
+<div class="btn-group">
+<a href="{% url 'home' %}" class="btn btn-primary">Home</a>
+<a href="{% url 'logout' %}" class="btn btn-outline-primary">Logout</a>
+</div>
+{% else %}
+<div id="login">
+<h1>Login</h1>
+<form action="" method="POST">
+     {% csrf_token %}
+     {{ form.as_p }}
+     <button class="btn btn-primary">Login</button>
+</form>
+<p>Don't have an account ? <a href="{% url 'signup' %}">Signup</a></p>
+<p>Forgot password ? <a href="/password_reset/">Reset</a></p>
+</div>
+{% endif %}
+</div>
+</center>
+{% endblock content %}
+
+{% if user.is_authenticated %}
+{% block custom_js %}
+<script src="/static/js/login.js"></script>
+{% endblock custom_js %}
+
+{% endif %}

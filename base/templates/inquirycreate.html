@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block custom_css %}
+<style>
+#create {
+    background-color: #3894be;
+    width: 80%;
+    padding: 20px;
+    color: white;
+    border-radius: 8px;
+    margin-top: 5%;
+}
+</style>
+{% endblock custom_css %}
+
+{% block title %}
+Make Inquiry - For {{ property.title }}
+{% endblock title %}
+
+{% block content %}
+<center>
+    <div class="container">
+        <div id="create">
+            <h1>Make an inquiry</h1>
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</center>
+{% endblock content %}

@@ -1,0 +1,23 @@
+{% load humanize %}
+
+<p class="card-title" style="font-size: 50px;">{{ property.title }}</p>
+<p class="card-text" style="font-size: 25px;">${{ property.price | intcomma }}</p>
+<p class="card-text" style="font-size: 20px;">{{ property.description }}</p>
+<p class="card-text" style="font-size: 20px;">In {{ property.city }}, {{ property.state }}, {{ property.zipcode }}</p>
+<p class="card-text" style="font-size: 20px;">Garage : {{ property.garage }}</p>
+<p class="card-text" style="font-size: 20px;">Sqft : {{ property.sqft }}</p>
+<p class="card-text" style="font-size: 20px;">Bathrooms : {{ property.bathrooms }}</p>
+<p class="card-text" style="font-size: 20px;">Bedrooms : {{ property.bedrooms }}</p>
+<h3>Realtor : </h3>
+<div class="card mb-3">
+    <img class="card-image" src="{{ property.realtor.photo.url }}"/>
+    <div class="card-body">
+    <p style="font-size: 25px;">{{ property.realtor.name }}</p>
+    <p style="font-size: 20px;">{{ property.realtor.description }}</p>
+    {% if user.is_authenticated %}
+    <a class="btn btn-primary" href="{% url 'create-contact' property.id %}">Make an inquiry</a>
+    {% else %}
+    <a href="{% url 'login' %}">Login to make an inquiry</a>
+    {% endif %}
+    </div>
+</div>

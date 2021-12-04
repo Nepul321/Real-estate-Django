@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Dashboard
+{% endblock title %}
+
+{% block custom_css %}
+<style>
+    .inquiries {
+        padding: 15px;
+        border: 1.5px solid rgb(10, 73, 173);
+    }
+
+    .bigger-text {
+        font-size: 20px;
+    }
+
+    .title {
+        font-size: 25px;
+    }
+</style>
+{% endblock custom_css %}
+
+{% block content %}
+<div class="container my-5">
+    <h1>Dashboard</h1>
+    <div class="inquiries my-5">
+        <h3>Inquiries made</h3>
+        {% for item in contacts %}
+        <div class="card">
+            <div class="card-body">
+                <p class="title">{{ item.listing.title }}</p>
+                <p class="bigger-text">{{ item.phone }}</p>
+                <p class="bigger-text">{{ item.message }}</p>
+                <form action="{% url 'delete-contact' item.id %}" method="POST">
+                    {% csrf_token %}
+                    <button class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

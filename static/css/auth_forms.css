@@ -1,0 +1,26 @@
+#login {
+    background-color: #115861;
+    width: 75%;
+    padding: 20px;
+    color: white;
+    border-radius: 8px;
+    margin-top: 10%;
+}
+
+#signup {
+    background-color: #15465d;
+    width: 80%;
+    padding: 20px;
+    color: white;
+    border-radius: 8px;
+    margin-top: 5%;
+}
+
+a {
+   text-decoration: none;
+   color: white;
+}
+
+ul {
+    list-style: none;
+}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Real estate - Delete account
+{% endblock title %}
+
+{% block content %}
+<h1>Delete account</h1>
+<form action="" method="POST">
+   {% csrf_token %}
+   <div class="btn-group">
+   <a href="{% url 'home' %}" class="btn btn-outline-success">Cancel</a>
+   <button class="btn btn-danger">Delete</button>
+</div>
+</form>
+{% endblock content %}

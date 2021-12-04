@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block title %}
+About us
+{% endblock title %}
+
+{% block custom_css %}
+<link rel="stylesheet" href="/static/css/cards.css" />
+{% endblock custom_css %}
+
+{% block content %}
+<div class="container my-4">
+    <div id="realtors">
+        <h1>Our realtors</h1>
+
+        <section class="Resource-main">
+        {% for realtor in realtors %}
+          <article class="Resource-tile">
+            <div class="Resource-tile-anchor">
+        
+              <div class="Resource-tile-media">
+                <img class="Resource-tile-img" src="{{ realtor.photo.url }}">
+              </div>
+        
+              <div class="Resource-tile-content">
+                <h2 class="Resource-tile-title">{{ realtor.name }}</h2>
+        
+                <div class="Resource-tile-intro">
+                  <p>Phone : (+1){{ realtor.phone }}</p>
+                  <p>Email : {{ realtor.email }}</p>
+                </div>
+              </div>
+            </div>
+        
+          </article>
+        {% endfor %}
+        </section>
+    </div>
+    <div id="sellor-of-the-month">
+        <h1>Best Seller of the month</h1>
+
+        <section class="Resource-main">
+          <article class="Resource-tile">
+            <div class="Resource-tile-anchor">
+        
+              <div class="Resource-tile-media">
+                <img class="Resource-tile-img" src="{{ best.photo.url }}">
+              </div>
+        
+              <div class="Resource-tile-content">
+                <h2 class="Resource-tile-title">{{ best.name }}</h2>
+        
+                <div class="Resource-tile-intro">
+                  <p>{{ best.description }}</p>
+                </div>
+              </div>
+            </div>
+        
+          </article>
+        </section>
+    </div>
+</div>
+
+
+{% endblock content %}
