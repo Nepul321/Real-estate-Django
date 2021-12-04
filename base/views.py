@@ -83,10 +83,17 @@ def AboutView(request):
 	template = "about.html"
 	realtors = Realtor.objects.all()
 	best = realtors.filter(is_mvp=True).first()
-	context = {
-         'realtors' : realtors,
-		 'best' : best,
+	if best:
+		context = {
+			'realtors' : realtors,
+			'best' : best,
 
-	}
+		}
+	else:
+		context = {
+			'realtors' : realtors,
+
+		}
+		
 
 	return render(request, template, context)
